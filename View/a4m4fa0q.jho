@@ -1,0 +1,144 @@
+﻿using System;
+using System.Windows.Forms;
+using MyProjects.Calculator.Presenter;
+
+namespace MyProjects.Calculator.View
+{
+    public partial class InputView : UserControl
+    {
+        private readonly ResultPresenter presenter;
+        string operation = "";
+        public InputView()
+        {
+            InitializeComponent();
+            presenter = ResultPresenter.Instance;
+            presenter.InputView = this;
+        }
+
+        private void buttonBackspace_Click(object sender, EventArgs e)
+        {
+            operation = operation.TrimEnd(operation[operation.Length-1]);
+            presenter.RefreshOperation(operation);
+        }
+
+        private void buttonSqrt_Click(object sender, EventArgs e)
+        {
+            anyButton_Click(buttonSqrt);
+        }
+
+        private void buttonCE_Click(object sender, EventArgs e)
+        {
+            operation = "";
+            presenter.RefreshOperation(operation);
+        }
+
+        private void buttonC_Click(object sender, EventArgs e)
+        {
+            operation = "";
+            presenter.RefreshOperation(operation);
+            presenter.RefreshResult(0);
+        }
+
+        private void buttonNegate_Click(object sender, EventArgs e)
+        {
+            anyButton_Click(buttonNegate);
+        }
+
+        private void buttonPlus_Click(object sender, EventArgs e)
+        {
+            anyButton_Click(buttonPlus);
+        }
+
+        private void button0_Click(object sender, EventArgs e)
+        {
+            anyButton_Click(button0);
+        }
+
+        private void buttonComa_Click(object sender, EventArgs e)
+        {
+            anyButton_Click(buttonComa);
+        }
+
+        private void buttonMinus_Click(object sender, EventArgs e)
+        {
+            anyButton_Click(buttonMinus);
+        }
+
+        private void buttonEqual_Click(object sender, EventArgs e)
+        {
+            presenter.CalculateOperation();
+        }
+
+        private void buttonTimes_Click(object sender, EventArgs e)
+        {
+            anyButton_Click(buttonTimes);
+        }
+
+        private void buttonDivide_Click(object sender, EventArgs e)
+        {
+            anyButton_Click(buttonDivide);
+        }
+
+        private void buttonPow_Click(object sender, EventArgs e)
+        {
+            anyButton_Click(buttonPow);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            anyButton_Click(button6);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            anyButton_Click(button7);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            anyButton_Click(button8);
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            anyButton_Click(button9);
+        }
+
+        private void buttonPourcent_Click(object sender, EventArgs e)
+        {
+            anyButton_Click(buttonPourcent);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            anyButton_Click(button5);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            anyButton_Click(button4);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            anyButton_Click(button3);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            anyButton_Click(button2);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            anyButton_Click(button1);
+        }
+        
+        private void anyButton_Click(Button button)
+        {
+            operation += button.Text;
+            //maj de TextBoxOp dans ShowResultView
+            presenter.RefreshOperation(operation);
+        }
+    }
+}
